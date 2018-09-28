@@ -6,6 +6,7 @@ def get_word_string(filename):
     try:
         file_contents = open(filename)
         file_contents = file_contents.read()
+        # Hreinsar út alla enter/return takka
         file_contents = file_contents.replace("\n"," ")
         return file_contents
     except:
@@ -17,18 +18,21 @@ def find_punk(word):
     punks = []
     for index, letter in enumerate(word):
         contains_punk = False
+        # Ef orðið inniheldur punctations þá setur hún contains_punk í True
         if letter in string.punctuation:
             contains_punk = True
 
+        # Orðið með punctations þá setur hún það í lista, hvar orðið er, hvað orðið er og stafurinn
         if contains_punk == True:
             punks = [index, word, letter]
     return punks
 
-# Setur inn punkta, komur eða nanað þar sem á við
+# Setur inn punkta, komur eða annað þar sem á við
 def add_punk(index,punk,word):
+    # Síður samnan orðið með staðsetningu á punc og skilar því til baka
     new_word = str(word[:index] + punk + word[index:])
     return new_word
-add_punk
+
 # Skramblar orðið
 def scramble_word(word):
     # Sækir lengd orðs til að finna út enda á orði
