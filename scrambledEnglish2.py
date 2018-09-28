@@ -3,8 +3,11 @@ import random
 
 # Opna skjalið og setja það í streng
 def get_word_string(filename):
-    file_object  = open(filename, encoding="utf-8")
-    return file_object.read()
+    try:
+        file_object  = open(filename, encoding="utf-8")
+        return file_object.read()
+    except Exception:
+        print("File {} not found".format(filename))
 
 # Finna punkta og kommur og setja indexinn ásamt hvað
 # á að koma eftir breytingu á orði
@@ -69,7 +72,8 @@ def scramble_string(word_string):
 
 # Main program starts here - DO NOT change it
 random.seed(10)
-filename = input("Enter name of file: ")
+#filename = input("Enter name of file: ")
+filename = 
 word_string = get_word_string(filename)
 scrambled_string = scramble_string(word_string)
 print(scrambled_string)
